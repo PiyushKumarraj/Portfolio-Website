@@ -754,6 +754,27 @@ footer {
     width: 100%;
 }
 
+/* Additional skill color classes */
+.text-pink {
+    color: #ec4899 !important;
+}
+
+.text-purple {
+    color: #8b5cf6 !important;
+}
+
+/* Enhanced skill section spacing */
+.skill-item {
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.skill-item:hover {
+    background: rgba(79, 70, 229, 0.05);
+    transform: translateX(5px);
+}
+
 /* Custom cursor effect */
 body.custom-cursor {
     cursor: none;

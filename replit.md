@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a personal portfolio website for Alex Johnson, a Full Stack Developer. The project is a static website built with modern web technologies, featuring a responsive design, dark/light theme toggle, smooth animations, and interactive elements. The website showcases skills, projects, and contact information in a professional and visually appealing manner.
+This is a personal portfolio website for Alex Johnson, a Full Stack Developer. The project is a static website built with modern web technologies, featuring a responsive design, dark/light theme toggle, smooth animations, and interactive elements. The website showcases an extensive range of skills including version control, deployment platforms, testing frameworks, and modern development tools, along with projects and contact information in a professional and visually appealing manner.
 
 ## User Preferences
 
