@@ -20,6 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
     initContactForm();
     initCustomCursor();
     initProgressBars();
+    initScrollProgress();
+    initParticleSystem();
+    initLazyLoading();
+    initTextRevealAnimation();
+    initTestimonialSlider();
 });
 
 // Navbar Scroll Effect
@@ -407,6 +412,259 @@ const addAnimationCSS = () => {
 
 // Initialize animation CSS
 addAnimationCSS();
+
+// Scroll Progress Indicator
+function initScrollProgress() {
+    const scrollProgress = document.getElementById('scrollProgress');
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const maxHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrolled / maxHeight) * 100;
+        
+        scrollProgress.style.width = scrollPercent + '%';
+    });
+}
+
+// Particle System for Interactive Background
+function initParticleSystem() {
+    const canvas = document.createElement('canvas');
+    canvas.id = 'particles-canvas';
+    canvas.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -2;
+        opacity: 0.6;
+    `;
+    document.body.appendChild(canvas);
+    
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    
+    function createParticle() {
+        return {
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 2 + 1,
+            dx: (Math.random() - 0.5) * 0.5,
+            dy: (Math.random() - 0.5) * 0.5,
+            opacity: Math.random() * 0.5 + 0.2
+        };
+    }
+    
+    function initParticles() {
+        particles = [];
+        for (let i = 0; i < 50; i++) {
+            particles.push(createParticle());
+        }
+    }
+    
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        particles.forEach((particle, index) => {
+            particle.x += particle.dx;
+            particle.y += particle.dy;
+            
+            if (particle.x < 0 || particle.x > canvas.width) particle.dx *= -1;
+            if (particle.y < 0 || particle.y > canvas.height) particle.dy *= -1;
+            
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(79, 70, 229, ${particle.opacity})`;
+            ctx.fill();
+        });
+        
+        // Connect nearby particles
+        particles.forEach((particle1, i) => {
+            particles.slice(i + 1).forEach(particle2 => {
+                const distance = Math.sqrt(
+                    Math.pow(particle1.x - particle2.x, 2) + 
+                    Math.pow(particle1.y - particle2.y, 2)
+                );
+                
+                if (distance < 100) {
+                    ctx.beginPath();
+                    ctx.moveTo(particle1.x, particle1.y);
+                    ctx.lineTo(particle2.x, particle2.y);
+                    ctx.strokeStyle = `rgba(79, 70, 229, ${0.1 * (1 - distance / 100)})`;
+                    ctx.stroke();
+                }
+            });
+        });
+        
+        requestAnimationFrame(animateParticles);
+    }
+    
+    resizeCanvas();
+    initParticles();
+    animateParticles();
+    
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+        initParticles();
+    });
+}
+
+// Lazy Loading for Images
+function initLazyLoading() {
+    const images = document.querySelectorAll('img');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                }
+                img.classList.add('fade-in');
+                observer.unobserve(img);
+            }
+        });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+}
+
+// Text Reveal Animation
+function initTextRevealAnimation() {
+    const textElements = document.querySelectorAll('.section-title, .lead');
+    
+    const textObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('text-reveal');
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    textElements.forEach(el => textObserver.observe(el));
+}
+
+// Enhanced Testimonial Interaction
+function initTestimonialSlider() {
+    const testimonials = document.querySelectorAll('.testimonial-card');
+    
+    testimonials.forEach((card, index) => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-15px) scale(1.02)';
+            card.style.zIndex = '10';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0) scale(1)';
+            card.style.zIndex = '1';
+        });
+        
+        // Add click interaction
+        card.addEventListener('click', () => {
+            card.classList.add('pulse');
+            setTimeout(() => {
+                card.classList.remove('pulse');
+            }, 1000);
+        });
+    });
+}
+
+// Enhanced Contact Form with Real-time Validation
+function initEnhancedContactForm() {
+    const form = document.querySelector('.contact-form');
+    const inputs = form.querySelectorAll('input, textarea');
+    
+    inputs.forEach(input => {
+        // Real-time validation
+        input.addEventListener('blur', function() {
+            validateField(this);
+        });
+        
+        input.addEventListener('input', function() {
+            clearValidation(this);
+        });
+    });
+    
+    function validateField(field) {
+        const value = field.value.trim();
+        let isValid = true;
+        let message = '';
+        
+        if (field.hasAttribute('required') && !value) {
+            isValid = false;
+            message = 'This field is required';
+        } else if (field.type === 'email' && value && !isValidEmail(value)) {
+            isValid = false;
+            message = 'Please enter a valid email address';
+        }
+        
+        if (!isValid) {
+            showFieldError(field, message);
+        } else {
+            showFieldSuccess(field);
+        }
+        
+        return isValid;
+    }
+    
+    function showFieldError(field, message) {
+        field.classList.add('is-invalid');
+        field.classList.remove('is-valid');
+        
+        let feedback = field.parentNode.querySelector('.invalid-feedback');
+        if (!feedback) {
+            feedback = document.createElement('div');
+            feedback.className = 'invalid-feedback';
+            field.parentNode.appendChild(feedback);
+        }
+        feedback.textContent = message;
+    }
+    
+    function showFieldSuccess(field) {
+        field.classList.add('is-valid');
+        field.classList.remove('is-invalid');
+        
+        const feedback = field.parentNode.querySelector('.invalid-feedback');
+        if (feedback) {
+            feedback.remove();
+        }
+    }
+    
+    function clearValidation(field) {
+        field.classList.remove('is-valid', 'is-invalid');
+        const feedback = field.parentNode.querySelector('.invalid-feedback');
+        if (feedback) {
+            feedback.remove();
+        }
+    }
+}
+
+// Add Mouse Movement Parallax Effect
+function initMouseParallax() {
+    document.addEventListener('mousemove', (e) => {
+        const shapes = document.querySelectorAll('.shape');
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+        
+        shapes.forEach((shape, index) => {
+            const intensity = (index + 1) * 0.5;
+            const xMove = (x - 0.5) * intensity;
+            const yMove = (y - 0.5) * intensity;
+            
+            shape.style.transform = `translate(${xMove}px, ${yMove}px)`;
+        });
+    });
+}
+
+// Initialize enhanced features
+initEnhancedContactForm();
+initMouseParallax();
 
 // Preloader (Optional)
 function initPreloader() {
