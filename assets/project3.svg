@@ -1,0 +1,197 @@
+<svg width="400" height="250" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95" />
+      <stop offset="100%" style="stop-color:#f8fafc;stop-opacity:0.9" />
+    </linearGradient>
+    <linearGradient id="chartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:0.3" />
+    </linearGradient>
+    <radialGradient id="sunGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:0.8" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background Sky -->
+  <rect width="400" height="250" fill="url(#skyGradient)"/>
+  
+  <!-- Clouds -->
+  <g opacity="0.7">
+    <ellipse cx="80" cy="40" rx="15" ry="8" fill="white"/>
+    <ellipse cx="90" cy="40" rx="20" ry="10" fill="white"/>
+    <ellipse cx="100" cy="40" rx="12" ry="6" fill="white"/>
+    
+    <ellipse cx="300" cy="60" rx="18" ry="9" fill="white"/>
+    <ellipse cx="315" cy="60" rx="25" ry="12" fill="white"/>
+    <ellipse cx="330" cy="60" rx="15" ry="7" fill="white"/>
+  </g>
+  
+  <!-- Sun -->
+  <circle cx="320" cy="50" r="20" fill="url(#sunGradient)">
+    <animate attributeName="r" values="20;22;20" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Sun Rays -->
+  <g stroke="#fbbf24" stroke-width="2" opacity="0.6">
+    <line x1="320" y1="20" x2="320" y2="30">
+      <animate attributeName="y2" values="30;25;30" dur="2s" repeatCount="indefinite"/>
+    </line>
+    <line x1="320" y1="70" x2="320" y2="80">
+      <animate attributeName="y1" values="70;75;70" dur="2s" repeatCount="indefinite"/>
+    </line>
+    <line x1="290" y1="50" x2="300" y2="50">
+      <animate attributeName="x2" values="300;295;300" dur="2s" repeatCount="indefinite"/>
+    </line>
+    <line x1="340" y1="50" x2="350" y2="50">
+      <animate attributeName="x1" values="340;345;340" dur="2s" repeatCount="indefinite"/>
+    </line>
+  </g>
+  
+  <!-- Mobile Phone Frame -->
+  <rect x="50" y="50" width="180" height="320" rx="15" fill="#1f2937" transform="scale(0.6) translate(50, 0)"/>
+  <rect x="60" y="70" width="160" height="280" rx="8" fill="#000000" transform="scale(0.6) translate(50, 0)"/>
+  
+  <!-- Phone Screen -->
+  <rect x="65" y="75" width="150" height="270" rx="5" fill="url(#cardGradient)" transform="scale(0.6) translate(50, 0)"/>
+  
+  <!-- Weather App Interface -->
+  <!-- Header -->
+  <rect x="70" y="80" width="140" height="25" fill="#3b82f6" rx="3" transform="scale(0.6) translate(50, 0)"/>
+  <text x="85" y="97" font-family="Arial" font-size="10" fill="white" font-weight="bold" transform="scale(0.6) translate(50, 0)">Weather Dashboard</text>
+  
+  <!-- Location -->
+  <text x="75" y="120" font-family="Arial" font-size="8" fill="#374151" transform="scale(0.6) translate(50, 0)">📍 San Francisco, CA</text>
+  
+  <!-- Current Weather Card -->
+  <rect x="75" y="130" width="130" height="60" fill="white" rx="8" stroke="#e2e8f0" transform="scale(0.6) translate(50, 0)"/>
+  
+  <!-- Weather Icon -->
+  <circle cx="95" cy="155" r="12" fill="#fbbf24" transform="scale(0.6) translate(50, 0)">
+    <animate attributeName="r" values="12;14;12" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Temperature -->
+  <text x="120" y="155" font-family="Arial" font-size="16" fill="#1f2937" font-weight="bold" transform="scale(0.6) translate(50, 0)">72°F</text>
+  <text x="120" y="170" font-family="Arial" font-size="6" fill="#6b7280" transform="scale(0.6) translate(50, 0)">Sunny</text>
+  <text x="120" y="180" font-family="Arial" font-size="5" fill="#6b7280" transform="scale(0.6) translate(50, 0)">Feels like 75°F</text>
+  
+  <!-- Weather Details -->
+  <rect x="75" y="200" width="130" height="40" fill="white" rx="5" stroke="#e2e8f0" transform="scale(0.6) translate(50, 0)"/>
+  
+  <!-- Humidity -->
+  <text x="80" y="215" font-family="Arial" font-size="5" fill="#374151" transform="scale(0.6) translate(50, 0)">💧 Humidity</text>
+  <text x="80" y="225" font-family="Arial" font-size="7" fill="#1f2937" font-weight="bold" transform="scale(0.6) translate(50, 0)">65%</text>
+  
+  <!-- Wind -->
+  <text x="125" y="215" font-family="Arial" font-size="5" fill="#374151" transform="scale(0.6) translate(50, 0)">🌪️ Wind</text>
+  <text x="125" y="225" font-family="Arial" font-size="7" fill="#1f2937" font-weight="bold" transform="scale(0.6) translate(50, 0)">12 mph</text>
+  
+  <!-- UV Index -->
+  <text x="170" y="215" font-family="Arial" font-size="5" fill="#374151" transform="scale(0.6) translate(50, 0)">☀️ UV</text>
+  <text x="170" y="225" font-family="Arial" font-size="7" fill="#1f2937" font-weight="bold" transform="scale(0.6) translate(50, 0)">High</text>
+  
+  <!-- 5-Day Forecast -->
+  <text x="75" y="260" font-family="Arial" font-size="6" fill="#374151" font-weight="bold" transform="scale(0.6) translate(50, 0)">5-Day Forecast</text>
+  
+  <!-- Forecast Items -->
+  <rect x="75" y="270" width="130" height="60" fill="white" rx="5" stroke="#e2e8f0" transform="scale(0.6) translate(50, 0)"/>
+  
+  <!-- Day 1 -->
+  <text x="80" y="285" font-family="Arial" font-size="4" fill="#6b7280" transform="scale(0.6) translate(50, 0)">Today</text>
+  <circle cx="90" cy="295" r="4" fill="#fbbf24" transform="scale(0.6) translate(50, 0)"/>
+  <text x="100" y="298" font-family="Arial" font-size="4" fill="#1f2937" transform="scale(0.6) translate(50, 0)">72°/58°</text>
+  
+  <!-- Day 2 -->
+  <text x="80" y="305" font-family="Arial" font-size="4" fill="#6b7280" transform="scale(0.6) translate(50, 0)">Tomorrow</text>
+  <circle cx="90" cy="315" r="4" fill="#94a3b8" transform="scale(0.6) translate(50, 0)"/>
+  <text x="100" y="318" font-family="Arial" font-size="4" fill="#1f2937" transform="scale(0.6) translate(50, 0)">68°/55°</text>
+  
+  <!-- Chart Area -->
+  <rect x="140" y="280" width="60" height="40" fill="url(#chartGradient)" rx="3" transform="scale(0.6) translate(50, 0)"/>
+  
+  <!-- Temperature Chart Line -->
+  <polyline points="145,310 155,305 165,300 175,295 185,305 195,310" 
+            fill="none" stroke="#0891b2" stroke-width="1.5" transform="scale(0.6) translate(50, 0)">
+    <animate attributeName="points" values="145,310 155,305 165,300 175,295 185,305 195,310;145,315 155,308 165,302 175,298 185,308 195,315;145,310 155,305 165,300 175,295 185,305 195,310" dur="4s" repeatCount="indefinite"/>
+  </polyline>
+  
+  <!-- Chart Data Points -->
+  <circle cx="155" cy="305" r="1" fill="#0891b2" transform="scale(0.6) translate(50, 0)">
+    <animate attributeName="cy" values="305;308;305" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="175" cy="295" r="1" fill="#0891b2" transform="scale(0.6) translate(50, 0)">
+    <animate attributeName="cy" values="295;298;295" dur="4s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Desktop Monitor -->
+  <rect x="220" y="80" width="160" height="120" rx="8" fill="#374151"/>
+  <rect x="230" y="90" width="140" height="100" rx="4" fill="#1f2937"/>
+  
+  <!-- Monitor Screen -->
+  <rect x="235" y="95" width="130" height="90" rx="2" fill="url(#cardGradient)"/>
+  
+  <!-- Desktop Weather Dashboard -->
+  <!-- Header -->
+  <rect x="240" y="100" width="120" height="15" fill="#3b82f6" rx="2"/>
+  <text x="245" y="110" font-family="Arial" font-size="6" fill="white" font-weight="bold">Weather Analytics</text>
+  
+  <!-- Large Temperature Display -->
+  <text x="250" y="130" font-family="Arial" font-size="16" fill="#1f2937" font-weight="bold">72°</text>
+  <text x="250" y="140" font-family="Arial" font-size="4" fill="#6b7280">San Francisco</text>
+  
+  <!-- Mini Chart -->
+  <rect x="300" y="120" width="50" height="25" fill="white" stroke="#e2e8f0"/>
+  <polyline points="305,140 315,135 325,130 335,125 345,135" fill="none" stroke="#06b6d4" stroke-width="1">
+    <animate attributeName="points" values="305,140 315,135 325,130 335,125 345,135;305,142 315,137 325,132 335,127 345,137;305,140 315,135 325,130 335,125 345,135" dur="3s" repeatCount="indefinite"/>
+  </polyline>
+  
+  <!-- Weather Icons Row -->
+  <circle cx="250" cy="160" r="4" fill="#fbbf24"/>
+  <circle cx="270" cy="160" r="4" fill="#94a3b8"/>
+  <circle cx="290" cy="160" r="4" fill="#3b82f6"/>
+  <circle cx="310" cy="160" r="4" fill="#6b7280"/>
+  <circle cx="330" cy="160" r="4" fill="#fbbf24"/>
+  
+  <!-- Monitor Stand -->
+  <rect x="280" y="200" width="40" height="10" rx="5" fill="#4b5563"/>
+  <rect x="290" y="210" width="20" height="6" rx="3" fill="#6b7280"/>
+  
+  <!-- Floating Weather Elements -->
+  <g opacity="0.4">
+    <!-- Rain Drops -->
+    <circle cx="150" cy="180" r="1" fill="#3b82f6">
+      <animate attributeName="cy" values="180;190;180" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="160" cy="185" r="0.8" fill="#3b82f6">
+      <animate attributeName="cy" values="185;195;185" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Snowflakes -->
+    <g stroke="#e2e8f0" stroke-width="0.5" fill="none">
+      <path d="M370,120 L370,130 M365,125 L375,125 M367,122 L373,128 M373,122 L367,128" opacity="0.6">
+        <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="rotate" values="0 370 125;360 370 125" dur="4s" repeatCount="indefinite"/>
+      </path>
+    </g>
+  </g>
+  
+  <!-- API Indicators -->
+  <g opacity="0.3">
+    <text x="10" y="30" font-family="monospace" font-size="8" fill="#ffffff">API</text>
+    <text x="370" y="240" font-family="monospace" font-size="6" fill="#ffffff">Chart.js</text>
+    <text x="5" y="220" font-family="monospace" font-size="6" fill="#ffffff">Geolocation</text>
+  </g>
+  
+  <!-- Connection Lines -->
+  <g stroke="#4f46e5" stroke-width="1" opacity="0.3" stroke-dasharray="2,2">
+    <line x1="170" y1="140" x2="220" y2="140">
+      <animate attributeName="stroke-dashoffset" values="0;4;0" dur="2s" repeatCount="indefinite"/>
+    </line>
+  </g>
+</svg>
