@@ -125,7 +125,7 @@ function initThemeToggle() {
 function initTypingAnimation() {
     const typedTextElement = document.getElementById('typed-text');
     const texts = [
-        'Full Stack Developer',
+        'MERN-stack Developer',
         'UI/UX Designer',
         'Problem Solver',
         'Creative Thinker'
@@ -550,30 +550,7 @@ function initTextRevealAnimation() {
     textElements.forEach(el => textObserver.observe(el));
 }
 
-// Enhanced Testimonial Interaction
-function initTestimonialSlider() {
-    const testimonials = document.querySelectorAll('.testimonial-card');
-    
-    testimonials.forEach((card, index) => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-15px) scale(1.02)';
-            card.style.zIndex = '10';
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0) scale(1)';
-            card.style.zIndex = '1';
-        });
-        
-        // Add click interaction
-        card.addEventListener('click', () => {
-            card.classList.add('pulse');
-            setTimeout(() => {
-                card.classList.remove('pulse');
-            }, 1000);
-        });
-    });
-}
+
 
 // Enhanced Contact Form with Real-time Validation
 function initEnhancedContactForm() {
