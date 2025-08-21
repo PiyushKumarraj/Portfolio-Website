@@ -32,7 +32,7 @@ It showcases my **skills, projects, education, and contact details** in a clean 
 
 ## 🚀 Deployment
 My portfolio is live at:  
-👉 [Click here to view](piyushportfolio12.netlify.app)
+👉 [Click here to view](https://piyushportfolio12.netlify.app)
 
 ---
 
